@@ -3,7 +3,7 @@ import  {Loading}  from '../components/Loading'
 import  {Navbar}  from '../components/Navbar'
 import React from 'react'
 import axios from 'axios'
-import { Image, Card, Header, Segment, Grid, Breadcrumb } from 'semantic-ui-react';
+import { Image, Card, Header, Container, Grid, Breadcrumb } from 'semantic-ui-react';
 import Link from 'next/link'
 import Error from '../_error'
 import router from 'next/router'
@@ -42,11 +42,19 @@ class Home extends React.Component <Props, State> {
     .then(function () {
     });    
   }
-  
+
   render() {
     if (!this.state.isReady){
       return(
-        <Loading/>
+        <Grid>
+          <div className='loaderPosition' >
+            <Image src={'/loader.gif'} size='small' />
+          </div>
+          <div className='loaderPosition' >
+            <br/><br/><br/><br/><br/>
+            <text style={{'textAlign': 'center'}}> &#9;waiting....</text>          
+          </div>
+        </Grid>
       )
     } if (this.state.isError){
       return (<> <Error statusCode={404}/>  </>    )
@@ -62,7 +70,11 @@ class Home extends React.Component <Props, State> {
           <Breadcrumb.Divider />
           <Breadcrumb.Section active>{router.query.pageName}</Breadcrumb.Section>
         </Breadcrumb>
-        <Navbar title={router.query.pageName + ''}/>
+        <Container textAlign='center'>
+          <Header as='h1'>Welcome to Pokémon API</Header>
+          <Header.Subheader>{router.query.pageName?.toString().charAt(0).toUpperCase().concat(router.query.pageName?.toString().slice(1).toLowerCase())}</Header.Subheader>
+          </Container>
+        
         <br/><br/>
 
         <Card.Group centered textAlign='center' >

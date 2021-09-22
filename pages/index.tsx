@@ -1,9 +1,7 @@
 import Head from 'next/head'
-import { Loading } from './components/Loading'
-import { Navbar } from './components/Navbar'
 import React from 'react'
 import axios from 'axios'
-import { Image, Card, Header, Segment, Grid } from 'semantic-ui-react';
+import { Image, Card, Header, Container, Grid } from 'semantic-ui-react';
 import { Route } from 'react-router'
 import { WithRouterProps } from "next/dist/client/with-router";
 
@@ -47,7 +45,15 @@ class Home extends React.Component <Props, State, WithRouterProps> {
   render() {
     if (!this.state.isReady){
       return(
-        <Loading/>
+        <Grid>
+          <div className='loaderPosition' >
+            <Image src={'/loader.gif'} size='small' />
+          </div>
+          <div className='loaderPosition' >
+            <br/><br/><br/><br/><br/>
+            <text style={{'textAlign': 'center'}}> &#9;waiting....</text>          
+          </div>
+        </Grid>
       )
     } else {
     return(     
@@ -57,8 +63,10 @@ class Home extends React.Component <Props, State, WithRouterProps> {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <br/>
-        <Navbar title='Home'/>
-        <br/><br/>
+        <Container textAlign='center'>
+          <Header as='h1'>Welcome to Pokémon API</Header>
+          <Header.Subheader>Home</Header.Subheader>
+          </Container>  <br/><br/>
         <Card.Group centered textAlign='center' >
         {this.state.apiData?.map((answer, i) => {    
             return (
