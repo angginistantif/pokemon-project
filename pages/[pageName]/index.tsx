@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import { Loading } from '../components/Loading'
-import { Navbar } from '../components/Navbar'
+import  {Loading}  from '../components/Loading'
+import  {Navbar}  from '../components/Navbar'
 import React from 'react'
 import axios from 'axios'
 import { Image, Card, Header, Segment, Grid, Breadcrumb } from 'semantic-ui-react';
@@ -35,25 +35,14 @@ class Home extends React.Component <Props, State> {
   componentDidMount(){
     axios.get('https://pokeapi.co/api/v2/'+router.query.pageName)
     .then((response) => {
-      console.log('berhasil')
       this.setState({pageData: response.data.results, isReady:true})
     }).catch((error) => {
-      console.log('gagal')
       this.setState({isError : true, statusCode: error.statusCode, isReady:true})
-
-      
-
-      
     })
     .then(function () {
     });    
   }
-
-  getPosition(){
-    
-
-  }
-
+  
   render() {
     if (!this.state.isReady){
       return(
