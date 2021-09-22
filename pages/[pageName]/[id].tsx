@@ -50,8 +50,6 @@ class Home extends React.Component <Props, State> {
   }
 
   getPosition(){
-    
-
   }
 
   render() {
@@ -71,24 +69,12 @@ class Home extends React.Component <Props, State> {
         <Breadcrumb>
           <Breadcrumb.Section link href='/'>Home</Breadcrumb.Section>
           <Breadcrumb.Divider />
-          <Breadcrumb.Section active>{router.query.pageName}</Breadcrumb.Section>
+          <Breadcrumb.Section link >{router.query.pageName}</Breadcrumb.Section>
+          <Breadcrumb.Divider />
+          <Breadcrumb.Section active>{router.query.id}</Breadcrumb.Section>
         </Breadcrumb>
         <Navbar title={router.query.pageName + ''}/>
-        <br/><br/>
-
-        <Card.Group centered textAlign='center' >
-        {this.state.pageData?.map((answer, i) => {    
-            return (
-              <Card className='card-Hover'style={{"height":"38px"}} key={i} onClick={()=>router.push('/'+router.query.pageName+'/'+answer.name)}>
-                  <Card.Header textAlign='center'>
-                  {answer.name}
-                  </Card.Header>
-              </Card>
-                    
-            )         
-        })}
-        </Card.Group>
-        
+        <br/><br/>  
       </div>
     ) 
     }

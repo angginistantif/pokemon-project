@@ -15,10 +15,7 @@ const Error: React.FC<Props> = ({ statusCode }) => {
       <Head>
 
       </Head>
-      <Container>
-        {statusCode === 404
-          ? 'The page you are looking for could not be found.'
-          : <Grid>
+      <Grid>
           <div className='loaderPosition' >
             <Header as='h2' color='grey' style={{'textAlign': 'center'}}> 404 Error</Header>
             <br/>
@@ -29,9 +26,7 @@ const Error: React.FC<Props> = ({ statusCode }) => {
             <Button size='small' onClick={()=> router.push('/')} content='Kembali ke Home'color='orange'/>    
             </div>
           </div>
-         
-        </Grid>}
-      </Container>
+         </Grid>
     </>
   );
 };

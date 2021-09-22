@@ -56,6 +56,7 @@ class Home extends React.Component <Props, State, WithRouterProps> {
           <title> Pokemon Project </title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
+        <br/>
         <Navbar title='Home'/>
         <br/><br/>
         <Card.Group centered textAlign='center' >
