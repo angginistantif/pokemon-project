@@ -1,21 +1,25 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import { Loading } from './components/Loading'
 import { Navbar } from './components/Navbar'
 import React from 'react'
 import axios from 'axios'
 import { Image, Card, Header, Segment, Grid } from 'semantic-ui-react';
-import Link from 'next/link'
+import { Route } from 'react-router'
+import { WithRouterProps } from "next/dist/client/with-router";
 
+import Link from 'next/link'
+import router from 'next/router'
 
 
 interface Props {
+
 }
 interface State {
     apiData ?: Array<string>;
     isReady?: boolean;
 }
 
-class Home extends React.Component <Props, State> {
+class Home extends React.Component <Props, State, WithRouterProps> {
 
   constructor (props : Props){
     super(props);
@@ -43,11 +47,7 @@ class Home extends React.Component <Props, State> {
   render() {
     if (!this.state.isReady){
       return(
-        <Grid>
-          <div className='loaderPosition' >
-            <Image src={'/loader.gif'} size='small' centered />
-          </div>
-        </Grid>
+        <Loading/>
       )
     } else {
     return(     
@@ -56,21 +56,16 @@ class Home extends React.Component <Props, State> {
           <title> Pokemon Project </title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <Navbar/>
-        <Header as='h4' color='grey' textAlign='center'>Click for detail</Header>
+        <Navbar title='Home'/>
         <br/><br/>
-
-        <Card.Group centered textAlign='center' itemsPerRow='6' >
+        <Card.Group centered textAlign='center' >
         {this.state.apiData?.map((answer, i) => {    
             return (
-                    <Card className='card-Hover'style={{"height":"38px"}} >
-                        <Link href={'/'+answer}>
-                        <Card.Header textAlign='center'>
-                        {answer}
-                        </Card.Header>
-                        </Link>
-          
-                    </Card>
+              <Card className='card-Hover'style={{"height":"38px"}} key={i} onClick={()=>router.push(`/`+answer)}>
+                  <Card.Header textAlign='center'>
+                  {answer}
+                  </Card.Header>
+              </Card>
                     
             )         
         })}
@@ -81,4 +76,4 @@ class Home extends React.Component <Props, State> {
   }
 }
 
-export default Home
+export default Home;

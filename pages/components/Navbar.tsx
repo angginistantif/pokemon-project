@@ -1,11 +1,13 @@
 import { Header, Container } from "semantic-ui-react";
 // own css files here
-
-export const Navbar = () => {
+interface Props {
+  title : string
+}
+export const Navbar = ({ title }: Props) => {
   return (
-    <Container text>
-    <Header as='h1' textAlign='center'>Welcome to Pokémon API</Header>
-  
+    <Container textAlign='center'>
+    <Header as='h1'>Welcome to Pokémon API</Header>
+    <Header.Subheader>{title}</Header.Subheader>
     </Container>
   );
 };
