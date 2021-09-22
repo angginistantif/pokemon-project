@@ -12,8 +12,8 @@ interface Props {
   
 }
 interface State {
-    homeData?: Array<string>;
-    pageData ?: Array<string>;
+    homeData?: Array<any>;
+    pageData ?: Array<any>;
     isReady?: boolean;
     isError?: boolean;
     statusCode?: number;
@@ -73,7 +73,7 @@ class Home extends React.Component <Props, State> {
           <Breadcrumb.Divider />
           <Breadcrumb.Section active>{router.query.pageName}</Breadcrumb.Section>
         </Breadcrumb>
-        <Navbar title={router.query.pageName}/>
+        <Navbar title={router.query.pageName + ''}/>
         <br/><br/>
 
         <Card.Group centered textAlign='center' >
