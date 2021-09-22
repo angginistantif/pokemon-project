@@ -1,6 +1,4 @@
 import Head from 'next/head'
-import  {Loading}  from '../components/Loading'
-import  {Navbar}  from '../components/Navbar'
 import React from 'react'
 import axios from 'axios'
 import { Image, Card, Header, Container, Grid, Breadcrumb } from 'semantic-ui-react';
