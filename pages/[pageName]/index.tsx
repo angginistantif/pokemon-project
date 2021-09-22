@@ -65,7 +65,7 @@ class Home extends React.Component <Props, State> {
     return(     
       <div>
         <Head>
-          <title> Pokemon Project </title>
+          <title> {router.query.pageName?.toString().charAt(0).toUpperCase().concat(router.query.pageName?.toString().slice(1).toLowerCase())}  </title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <Breadcrumb>
@@ -73,7 +73,7 @@ class Home extends React.Component <Props, State> {
           <Breadcrumb.Divider />
           <Breadcrumb.Section active>{router.query.pageName}</Breadcrumb.Section>
         </Breadcrumb>
-        <Navbar title={router.query.pageName + ''}/>
+        <Navbar title={router.query.pageName?.toString().charAt(0).toUpperCase().concat(router.query.pageName?.toString().slice(1).toLowerCase())}/>
         <br/><br/>
 
         <Card.Group centered textAlign='center' >
