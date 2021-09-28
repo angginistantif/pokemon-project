@@ -95,22 +95,21 @@ class Home extends React.Component <Props, State> {
           </Container>
         <br/><br/>
 
-       <Container textAlign='center' style={{}} >
+       <Grid textAlign='center'>
         { router.query.pageName == 'pokemon' || router.query.pageName == 'ability'
           ?
             <>
-            <Form >
+            <Form onSubmit={()=> this.getData()}>
               <Form.Group  inline>
-              <label> Total Data  </label>
               <Form.Input type='number' value={this.state.totalFetch} onChange={(e)=>this.changeFetch(e)} color='grey'/>
-              <Form.Button content='APPLY'onClick={()=> this.getData()}/>
+              <Form.Button content='TOTAL DATA'/>
               </Form.Group>
             </Form>
             <br/><br/>
             </>
           : <></>
         }
-        </Container>
+        </Grid>
 
         <Card.Group centered textAlign='center' >
         {this.state.pageData?.map((answer, i) => {    
