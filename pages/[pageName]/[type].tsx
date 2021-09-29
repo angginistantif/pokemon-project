@@ -20,6 +20,20 @@ function App(Props : any) {
           <meta property="og:title" content="My page title" key="title" />
           <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Breadcrumb>
+          <Breadcrumb.Section link href='/'>Home</Breadcrumb.Section>
+          <Breadcrumb.Divider />
+          <Breadcrumb.Section link href={`/${Props.query.pageName}`} >{Props.query.pageName}</Breadcrumb.Section>
+          <Breadcrumb.Divider />
+          <Breadcrumb.Section active>{Props.query.type}</Breadcrumb.Section>
+        </Breadcrumb>
+        <Container textAlign='center'>
+          <Header as='h1'>Welcome to Pokémon API</Header>
+          <Header.Subheader>
+            {Props.query.pageName?.toString().charAt(0).toUpperCase().concat(Props.query.pageName?.toString().slice(1).toLowerCase()) + ' - ' +Props.query.type?.toString().charAt(0).toUpperCase().concat(Props.query.type?.toString().slice(1).toLowerCase())}
+          </Header.Subheader>
+          </Container>
+        <br/><br/>
       { Props.query.pageName == 'pokemon'
         && <Pokemon name={Props.query.type}/>}
       

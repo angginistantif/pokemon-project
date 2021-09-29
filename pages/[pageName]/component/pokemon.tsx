@@ -2,15 +2,17 @@ import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {RootStore} from "../../../store/store";
 import {GetPokemon} from '../../../store/actions/pokemonAction';
-import { Image, Card, Header, Container, Grid } from 'semantic-ui-react';
+import { Image, List, Header, Segment, Grid } from 'semantic-ui-react';
 
 
 function Pokemon(name: any) {
 
     const pokemonState = useSelector((state: RootStore) => state.pokemon);
+    const [isReady, setReady] = useState(false);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(GetPokemon(name.name));
+        setReady(true);
       }, [])
     
 
@@ -18,12 +20,61 @@ function Pokemon(name: any) {
     <div className="App">
         {pokemonState.pokemon && (
         <div>
-            <Image src={pokemonState.pokemon.sprites.front_default} alt='ss'/>
-            {pokemonState.pokemon.sprites.front_default}
+            <Grid columns={3} divided>
+                <Grid.Row stretched>
+                <Grid.Column centered> 
+                    <Segment >
+                        <Image src={pokemonState.pokemon.sprites.front_default} centered size='medium' alt={pokemonState.pokemon.name}/>
 
-            {pokemonState.pokemon.abilities.map(ability => {
-            return <p>{ability.ability.name}</p>
-            })}
+                    </Segment>
+                </Grid.Column>
+                <Grid.Column>
+                    <Segment>
+                        <Header as='h4'>
+                            ID-{pokemonState.pokemon.id} <br/><br/>
+                            {pokemonState.pokemon.name.toUpperCase()}<br/><br/>
+                            WEIGHT-{pokemonState.pokemon.weight} <br/><br/>
+                            HEIGHT-{pokemonState.pokemon.height}<br/><br/>
+                        </Header>
+                    </Segment>
+                    <Segment>
+                        <Header as='h4'> ABILITIES </Header>
+                        <List bulleted>
+                            {pokemonState.pokemon.abilities.map(ability => {
+                            return (
+                                <List.Item>
+                                    <Header as='h5'>{ability.ability.name}</Header>
+                                </List.Item>)
+                            })}
+                        </List>
+                    </Segment>
+                </Grid.Column>
+                <Grid.Column>
+                    <Segment>
+                        <Header as='h4'> TYPE </Header>
+                        <List bulleted>
+                            {pokemonState.pokemon.types.map(each => {
+                            return (
+                                <List.Item>
+                                    <Header as='h5'>{each.type.name}</Header>
+                                </List.Item>)
+                            })}
+                        </List>
+                    </Segment>
+                    <Segment>
+                        <Header as='h4'> STATS </Header>
+                            <List bulleted>
+                                {pokemonState.pokemon.stats.map(each => {
+                                return (
+                                    <List.Item>
+                                        <Header as='h5'>{each.stat.name}</Header>
+                                    </List.Item>)
+                                })}
+                            </List>
+                    </Segment>
+                </Grid.Column>
+                </Grid.Row>
+            </Grid>            
         </div>
         )}
     </div>

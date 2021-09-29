@@ -10,7 +10,7 @@ export type PokemonType = {
   abilities: PokemonAbility[],
   sprites: PokemonSprites,
   stats: PokemonStat[]
-  type: PokemonTypeData[]
+  types: PokemonTypeData[]
 }
 
 export type PokemonAbility = {
@@ -26,6 +26,7 @@ export type PokemonSprites = {
 
 export type PokemonStat = {
   base_stat: number,
+  effort: number,
   stat: {
     name: string
   }
