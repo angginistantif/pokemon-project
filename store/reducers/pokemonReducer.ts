@@ -4,7 +4,7 @@ import {
     POKEMON_SUCCESS,
     PokemonDispatchTypes,
     PokemonType
-  } from "../actions/pokemonType";
+  } from "../actions/pokemon/pokemonType";
   
   interface DefaultStateI {
     loading?: boolean,

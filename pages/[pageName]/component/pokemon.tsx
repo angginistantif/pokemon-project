@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {RootStore} from "../../../store/store";
-import {GetPokemon} from '../../../store/actions/pokemonAction';
+import {GetPokemon} from '../../../store/actions/pokemon/pokemonAction';
 import { Image, List, Header, Segment, Grid } from 'semantic-ui-react';
+import Link from 'next/link';
 
 
 function Pokemon(name: any) {
@@ -38,7 +39,7 @@ function Pokemon(name: any) {
                         </Header>
                     </Segment>
                     <Segment>
-                        <Header as='h4'> ABILITIES </Header>
+                        <Header as='h4'> <Link href='/ability'> ABILITIES </Link> </Header>
                         <List bulleted>
                             {pokemonState.pokemon.abilities.map(ability => {
                             return (
@@ -51,7 +52,7 @@ function Pokemon(name: any) {
                 </Grid.Column>
                 <Grid.Column>
                     <Segment>
-                        <Header as='h4'> TYPE </Header>
+                        <Header as='h4'> <Link href='type'>TYPE</Link> </Header>
                         <List bulleted>
                             {pokemonState.pokemon.types.map(each => {
                             return (
@@ -62,7 +63,7 @@ function Pokemon(name: any) {
                         </List>
                     </Segment>
                     <Segment>
-                        <Header as='h4'> STATS </Header>
+                        <Header as='h4'> <Link href='/stat'>STATS </Link> </Header>
                             <List bulleted>
                                 {pokemonState.pokemon.stats.map(each => {
                                 return (

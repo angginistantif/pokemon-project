@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {RootStore} from "../../store/store";
-import {GetPokemon} from '../../store/actions/pokemonAction';
+import {GetPokemon} from '../../store/actions/pokemon/pokemonAction';
 import { Image, Card, Header, Container, Grid, Breadcrumb, Form } from 'semantic-ui-react';
 import Head from 'next/head';
 import Pokemon from './component/pokemon'
+import Ability from './component/ability';
 
 interface Props {
     query?: [] | any;
@@ -36,7 +37,8 @@ function App(Props : any) {
         <br/><br/>
       { Props.query.pageName == 'pokemon'
         && <Pokemon name={Props.query.type}/>}
-      
+      { Props.query.pageName == 'ability'
+        && <Ability name={Props.query.type}/>}
     </div>
   );
 }
