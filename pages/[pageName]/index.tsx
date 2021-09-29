@@ -5,6 +5,9 @@ import { Image, Card, Header, Container, Grid, Breadcrumb, Form, Button } from '
 import Link from 'next/link'
 import Error from '../_error'
 import router from 'next/router'
+import {useDispatch, useSelector} from "react-redux";
+import {RootStore} from "../../store/store";
+import {GetPokemon} from "../../store/actions/pokemonAction";
 
 interface Props {
   query?: [] | any;
@@ -62,6 +65,10 @@ class Home extends React.Component <Props, State> {
     this.setState({totalFetch : parseInt(e.currentTarget.value)})
   }
 
+  detailData = (name : string) =>{
+    router.push(`/${router.query.pageName}/${name}`)
+  } 
+
   render() {
     if (!this.state.isReady){
       return(
@@ -101,7 +108,7 @@ class Home extends React.Component <Props, State> {
             <>
             <Form onSubmit={()=> this.getData()}>
               <Form.Group  inline>
-              <Form.Input type='number' value={this.state.totalFetch} onChange={(e)=>this.changeFetch(e)} color='grey'/>
+              <Form.Input type='number' min={1} value={this.state.totalFetch} onChange={(e)=>this.changeFetch(e)} color='grey'/>
               <Form.Button content='TOTAL DATA'/>
               </Form.Group>
             </Form>
@@ -114,7 +121,7 @@ class Home extends React.Component <Props, State> {
         <Card.Group centered textAlign='center' >
         {this.state.pageData?.map((answer, i) => {    
             return (
-              <Card className='card-Hover'style={{"height":"38px"}} key={i} onClick={()=>router.push('/'+router.query.pageName+'/'+answer.name)}>
+              <Card className='card-Hover'style={{"height":"38px"}} key={i} value={answer.name} onClick={() => this.detailData(answer.name)}>
                   <Card.Header textAlign='center'>
                   {answer.name}
                   </Card.Header>

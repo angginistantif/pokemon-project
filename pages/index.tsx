@@ -2,10 +2,8 @@ import Head from 'next/head'
 import React from 'react'
 import axios from 'axios'
 import { Image, Card, Header, Container, Grid } from 'semantic-ui-react';
-import { Route } from 'react-router'
 import { WithRouterProps } from "next/dist/client/with-router";
 
-import Link from 'next/link'
 import router from 'next/router'
 
 
