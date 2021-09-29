@@ -1,8 +1,10 @@
-### Project Structure
+# Project Structure
 
 ## Pages
     menyimpan seluruh data yang ditampilkan
-# pageName
+### pageName
+    menerima query param secara dynamic
+#### component
     menerima query param secara dynamic
 
 

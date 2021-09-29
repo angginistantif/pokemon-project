@@ -70,7 +70,7 @@ class Home extends React.Component <Props, State> {
       return(
         <Grid>
           <div className='loaderPosition' >
-            <Image src={'/loader.gif'} size='small' />
+            <Image src={'/loader.gif'} size='small' alt='loading'/>
           </div>
           <div className='loaderPosition' >
             <br/><br/><br/><br/><br/>

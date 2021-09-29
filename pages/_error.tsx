@@ -21,7 +21,7 @@ const Error: React.FC<Props> = ({ statusCode }) => {
           <div className='loaderPosition' >
             <Header as='h2' color='grey' style={{'textAlign': 'center'}}> Error</Header>
             <br/>
-            <Image src={'/404Image.png'} size='small' />
+            <Image src={'/404Image.png'} size='small' alt='error'/>
             { statusCode==400
               ? <text > &#9;Halaman masih dikembangkan...</text> 
               : <text > &#9;Halaman tidak ditemukan....</text>
