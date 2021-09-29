@@ -2,12 +2,8 @@ import Head from 'next/head'
 import React from 'react'
 import axios from 'axios'
 import { Image, Card, Header, Container, Grid, Breadcrumb, Form, Button } from 'semantic-ui-react';
-import Link from 'next/link'
 import Error from '../_error'
 import router from 'next/router'
-import {useDispatch, useSelector} from "react-redux";
-import {RootStore} from "../../store/store";
-import {GetPokemon} from "../../store/actions/pokemonAction";
 
 interface Props {
   query?: [] | any;
