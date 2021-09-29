@@ -13,6 +13,8 @@ const Error: React.FC<Props> = ({ statusCode }) => {
   return (
     <>
       <Head>
+          <title> Error </title>
+          <link rel="icon" href="/favicon.ico" />
 
       </Head>
       <Grid>
