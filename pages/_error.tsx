@@ -17,10 +17,14 @@ const Error: React.FC<Props> = ({ statusCode }) => {
       </Head>
       <Grid>
           <div className='loaderPosition' >
-            <Header as='h2' color='grey' style={{'textAlign': 'center'}}> 404 Error</Header>
+            <Header as='h2' color='grey' style={{'textAlign': 'center'}}> Error</Header>
             <br/>
             <Image src={'/404Image.png'} size='small' />
-            <text > &#9;Halaman tidak ditemukan....</text> 
+            { statusCode==400
+              ? <text > &#9;Halaman masih dikembangkan...</text> 
+              : <text > &#9;Halaman tidak ditemukan....</text>
+            }
+             
             <br/><br/>
             <div style={{'textAlign': 'center'}}>
             <Button size='small' onClick={()=> router.push('/')} content='Kembali ke Home'color='orange'/>    

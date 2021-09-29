@@ -6,6 +6,8 @@ import { Image, Card, Header, Container, Grid, Breadcrumb, Form } from 'semantic
 import Head from 'next/head';
 import Pokemon from './component/pokemon'
 import Ability from './component/ability';
+import Error from '../_error'
+
 
 interface Props {
     query?: [] | any;
@@ -13,9 +15,14 @@ interface Props {
 }
 
 function App(Props : any) {
+
+  if (!(Props.query.pageName == 'ability' || Props.query.pageName == 'pokemon')){
+    return <Error statusCode={400}/>
+  } 
   
   return (
     <div className="App">
+      
       <Head>
           <title>{Props.query.pageName?.toString().charAt(0).toUpperCase().concat(Props.query.pageName?.toString().slice(1).toLowerCase())} </title>
           <meta property="og:title" content="My page title" key="title" />
@@ -39,6 +46,7 @@ function App(Props : any) {
         && <Pokemon name={Props.query.type}/>}
       { Props.query.pageName == 'ability'
         && <Ability name={Props.query.type}/>}
+      
     </div>
   );
 }
