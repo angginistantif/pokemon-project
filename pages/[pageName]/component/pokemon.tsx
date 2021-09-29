@@ -41,9 +41,9 @@ function Pokemon(name: any) {
                     <Segment>
                         <Header as='h4'> <Link href='/ability'> ABILITIES </Link> </Header>
                         <List bulleted>
-                            {pokemonState.pokemon.abilities.map(ability => {
+                            {pokemonState.pokemon.abilities.map((ability, i) => {
                             return (
-                                <List.Item>
+                                <List.Item key={i}>
                                     <Header as='h5'>{ability.ability.name}</Header>
                                 </List.Item>)
                             })}
@@ -54,9 +54,9 @@ function Pokemon(name: any) {
                     <Segment>
                         <Header as='h4'> <Link href='type'>TYPE</Link> </Header>
                         <List bulleted>
-                            {pokemonState.pokemon.types.map(each => {
+                            {pokemonState.pokemon.types.map((each, i) => {
                             return (
-                                <List.Item>
+                                <List.Item key={i}>
                                     <Header as='h5'>{each.type.name}</Header>
                                 </List.Item>)
                             })}
@@ -65,9 +65,9 @@ function Pokemon(name: any) {
                     <Segment>
                         <Header as='h4'> <Link href='/stat'>STATS </Link> </Header>
                             <List bulleted>
-                                {pokemonState.pokemon.stats.map(each => {
+                                {pokemonState.pokemon.stats.map((each, i) => {
                                 return (
-                                    <List.Item>
+                                    <List.Item key={i}>
                                         <Header as='h5'>{each.stat.name}</Header>
                                     </List.Item>)
                                 })}

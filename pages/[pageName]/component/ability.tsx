@@ -35,9 +35,9 @@ function Ability(name: any) {
                     <Segment>
                     <Header as='h4'> <Link href='/stat'>STATS </Link> </Header>
                             <List bulleted>
-                                {abilityState.ability.effect_entries.map(each => {
+                                {abilityState.ability.effect_entries.map((each,i) => {
                                 return (
-                                    <List.Item>
+                                    <List.Item key={i}>
                                         <Header as='h5'>{each.effect}</Header>
                                     </List.Item>)
                                 })}
